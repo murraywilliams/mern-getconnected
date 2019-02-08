@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
 });
 
 // @route 	GET /api/posts/:id
-// @desc 		Get posts
+// @desc 		Get post
 // @access 	Public
 router.get('/:id', (req, res) => {
   Post.findById(req.params.id)
@@ -182,7 +182,7 @@ router.post(
       .catch(err => res.status(404).json({ postnotfound: 'No post found' }));
   }
 );
-
+// first ID is the post id and second is comment ID
 // @route 	DELETE /api/posts/comment/:id/:comment_id
 // @desc 		Remove comment from post
 // @access 	Private
@@ -203,12 +203,12 @@ router.delete(
             .json({ commentnotexists: 'Comment does not exist' });
         }
 
-        // Get remove index
+        // Get index of comment to remove
         const removeIndex = post.comments
           .map(item => item._id.toString())
           .indexOf(req.params.comment_id);
 
-        // Splice comment out of array
+        // Splice comment out of array by index of comment
         post.comments.splice(removeIndex, 1);
 
         // Save

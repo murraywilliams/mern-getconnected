@@ -36,7 +36,7 @@ class Register extends Component {
             <div className='col-md-8 m-auto'>
               <h1 className='display-4 text-center'>Sign Up</h1>
               <p className='lead text-center'>
-                Create your DevConnector account
+                Create your GetConnected account
               </p>
               <form onSubmit={this.onSubmit}>
                 <div className='form-group'>

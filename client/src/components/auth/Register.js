@@ -14,6 +14,12 @@ class Register extends Component {
     errors: {}
   };
 
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/dashboard');
+    }
+  }
+
   // check if errors object has data from redux store
   // if it exists then add it to state errors property
   componentWillReceiveProps(nextProps) {

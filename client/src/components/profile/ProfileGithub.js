@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { keys } from '../../config/keys';
 
 class ProfileGithub extends Component {
+  _isMounted = false;
+
   state = {
     clientId: keys.clientId,
     clientSecret: keys.clientSecret,
@@ -13,7 +15,7 @@ class ProfileGithub extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props.username);
+    this._isMounted = true;
     const { username } = this.props;
     const { count, sort, clientId, clientSecret } = this.state;
 
@@ -22,11 +24,17 @@ class ProfileGithub extends Component {
     )
       .then(res => res.json())
       .then(data => {
-        this.setState({
-          repos: data
-        });
+        if (this._isMounted) {
+          this.setState({
+            repos: data
+          });
+        }
       })
       .catch(err => console.log(err));
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {

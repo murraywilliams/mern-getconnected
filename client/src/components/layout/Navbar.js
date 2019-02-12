@@ -34,7 +34,7 @@ class Navbar extends Component {
               className='rounded-circle'
               src={user.avatar}
               alt={user.name}
-              style={{ width: '25px', marginRight: '5px' }}
+              style={{ width: '25px', marginRight: '5px', cursor: 'pointer' }}
               title='You must have a Gravatar connect to your email to display an image'
             />
             Logout

@@ -1,6 +1,18 @@
 img {
   width: 100%;
 }
+html,
+body {
+  height: 100%;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.App .container {
+  flex: 1 0 auto;
+}
 
 .landing {
   position: relative;
